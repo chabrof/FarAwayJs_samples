@@ -1,0 +1,13 @@
+<html>
+<script src="./node_modules/requirejs/require.js"></script>
+<script>
+require.config({
+    baseUrl: 'js',
+    paths: {
+      'FarAwayJs': '../node_modules/FarAwayJs/js',
+      'jssha': '../node_modules/jssha/src/sha',
+      'chance': '../node_modules/chance/chance'
+    }
+  })
+require(['browBrowCallee'],  function(browBrowCallee) { browBrowCallee.main() })
+</script>
