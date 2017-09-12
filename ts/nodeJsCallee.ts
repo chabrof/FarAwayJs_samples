@@ -23,6 +23,9 @@ let streamer = new SimpleStream("localhost", "8080")
 streamer.setCommunication(wsCommunication) // the communication instance can be used and shared with the FarAway instance
 setInterval(() => streamer.sendData({Test : "test"}), 2000)
 
+let streamer2 = new SimpleStream("localhost", "8080")
+streamer2.setCommunication(wsCommunication) // the communication instance can be used and shared with the FarAway instance
+setInterval(() => streamer2.sendData({Test2 : "test2"}), 2000)
 
 // One method with arguments
 MyClass.prototype.foo = function(arg1 :any, arg2 :any) {
@@ -39,6 +42,13 @@ MyClass.prototype.getAPreciousStream = function() :SimpleStream {
   //streamCap.sendData({"Test" : "test"});
   return streamer
 }
+
+// Another method which returns a stream which can be listen by the callers
+MyClass.prototype.getAnotherPreciousStream = function() :SimpleStream {
+  //streamCap.sendData({"Test" : "test"});
+  return streamer2
+}
+
 
 //
 // Init FarAwayJs (and activate console logs)

@@ -30,7 +30,12 @@ function nextStep() {
           .then((result) => console.log('Result of method call', result))
           .then(() => (myClass as any).farCall("getAPreciousStream"))
           .then((stream) => { console.log('Stream', stream); return stream })
+          .then((stream) => listenToStream(stream));
+
+        // in parallel get another stream
+        (myClass as any).farCall("getAnotherPreciousStream")
           .then((stream) => listenToStream(stream))
+
       })
 }
 

@@ -28,6 +28,9 @@
     var streamer = new simple_stream_1.SimpleStream("localhost", "8080");
     streamer.setCommunication(wsCommunication); // the communication instance can be used and shared with the FarAway instance
     setInterval(function () { return streamer.sendData({ Test: "test" }); }, 2000);
+    var streamer2 = new simple_stream_1.SimpleStream("localhost", "8080");
+    streamer2.setCommunication(wsCommunication); // the communication instance can be used and shared with the FarAway instance
+    setInterval(function () { return streamer2.sendData({ Test2: "test2" }); }, 2000);
     // One method with arguments
     MyClass.prototype.foo = function (arg1, arg2) {
         return "The method foo is called on an instance of MyClass. Stored props: " + this._prop1 + ", " + this._prop2 + ". Arguments passed :" + arg1 + ", " + arg2;
@@ -40,6 +43,11 @@
     MyClass.prototype.getAPreciousStream = function () {
         //streamCap.sendData({"Test" : "test"});
         return streamer;
+    };
+    // Another method which returns a stream which can be listen by the callers
+    MyClass.prototype.getAnotherPreciousStream = function () {
+        //streamCap.sendData({"Test" : "test"});
+        return streamer2;
     };
     //
     // Init FarAwayJs (and activate console logs)

@@ -36,6 +36,9 @@
                 .then(function () { return myClass.farCall("getAPreciousStream"); })
                 .then(function (stream) { console.log('Stream', stream); return stream; })
                 .then(function (stream) { return listenToStream(stream); });
+            // in parallel get another stream
+            myClass.farCall("getAnotherPreciousStream")
+                .then(function (stream) { return listenToStream(stream); });
         });
     }
     function listenToStream(stream) {
